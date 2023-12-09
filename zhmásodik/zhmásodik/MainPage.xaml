@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:zhmásodik"
+             x:Class="zhmásodik.MainPage">
+
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        
+        <StackLayout Grid.Column="0">
+            <ListView ItemsSource="{Binding Hegyek}" ItemSelected="OnItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding Name}"/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+
+
+        <StackLayout Grid.Column="1">
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Név: "/>
+                        <Span Text="{Binding Nev}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Magasság: "/>
+                        <Span Text="{Binding High}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Megmásztam: " VerticalOptions="Center"/>
+                <CheckBox CheckedChanged="CheckBox" IsChecked="{Binding Pipa}"/>
+            </StackLayout>
+            <Button Text="Megmászások törlése" WidthRequest="400" HorizontalOptions="Start" Command="{Binding MyCommand}"/>
+
+        </StackLayout>
+
+        
+
+    </Grid>
+
+</ContentPage>
